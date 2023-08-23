@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>03-18</title>
+  </head>
+  <body>
+    <div id="app">
+      <span v-once>{{message}}</span> // v-once는 딱한번 로드시 랜더링하고 그뒤에 랜더링 절대안함
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var vm = Vue.createApp({
+        name: "App",
+        data() {
+          return { message: "Hello World" };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

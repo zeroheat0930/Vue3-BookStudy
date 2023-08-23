@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>03-16</title>
+    <style>
+      #list {
+        width: 600px;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      #list td,
+      #list th {
+        border: 1px solid black;
+        text-align: center;
+      }
+      #list > thead > tr {
+        color: yellow;
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <table id="list">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>전화번호</th>
+          </tr>
+        </thead>
+        <tbody id="contacts">
+          <tr v-for="contact in contacts" :key="contact.no">
+            <td>{{contact.no}}</td>
+            <td>{{contact.name}}</td>
+            <td>{{contact.tel}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var model = {             // 03-12와 다른점은 var model로 미리 배열을 만들고 vm에 넣어줌 그러면 vm.contacts가 proxy로 래핑되어서 나옴,
+                                // 결론은 데이터 변경할때 vue인스턴스 밖에서 선언한걸 직접 변경하면 안된다. 왜냐 랜더링이 안되기 떄문에
+                                // 그래서 이렇게 쓸때는 push(), splice(), sort()등 메서드를 써서 watcher에게 변경을 알려줘서 다시 랜더링 시켜야됨
+                                // vm.contacts[1].tel = "010-0000-0000" , vm.contacts.push({ no:1202, name:"뷔", tel:"010-0000-0000"})
+        contacts: [
+          { no: 1011, name: "RM", tel: "010-3456-8299" },
+          { no: 1012, name: "정국", tel: "010-3456-8298" },
+          { no: 1013, name: "제이홉", tel: "010-3456-8297" },
+          { no: 1014, name: "슈가", tel: "010-3456-8296" },
+        ],
+      };
+
+      var vm = Vue.createApp({
+        name: "App",
+        data() {
+          return model;
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
