@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-03</title>
+  </head>
+  <body>
+    <div id="app">
+      <input id="a" type="text" v-bind:value="message"> //v-bind는 단방향 데이터 바인딩이라 input에서 데이터 변경해서 message 변경안되고 console에서 message내용 바꾸면 바뀜
+      <img :src="imagePath" />  // :src == v-bind:src
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var vm = Vue.createApp({
+        name: "App",
+        data() {
+          return {
+            message: "v-bind 디렉티브",
+            imagePath: "https://contactsvc.bmaster.kro.kr/photos/18.jpg",
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

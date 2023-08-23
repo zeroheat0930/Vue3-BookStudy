@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-02</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2 v-html="message"></h2>  //03-01에서 바꾼부분 - {{}}, v-text 콘솔찍으면 그대로 나와서 태그문자열이 막 &lt 이런식으로 나오는 단점있음
+                                  // - 근데 v-html은 innerHTML속성으로 콘솔찍힘
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var model = { message: "Hello Vue3!" };
+      var vm = Vue.createApp({
+        name: "App",
+        data() {
+          return model;
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

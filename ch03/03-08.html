@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03-08</title>
+  </head>
+  <body>
+    <div id="app">
+      <input id="a" type="text" :value="name" @input="changeName" />  //v-model은 한글처리 문제가 있어서 단방향으로 바꿔주고 이벤트 줘서 바로바로 나오게 하면 편하다.
+      <br />
+      입력하신 이름 : <span>{{name}}</span>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var vm = Vue.createApp({
+        name: "App",
+        data() {
+          return { name: "" };
+        },
+        methods: {
+          changeName(e) {
+            this.name = e.target.value;
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
