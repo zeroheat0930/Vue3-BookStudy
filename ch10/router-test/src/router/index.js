@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory, isNavigationFailure } from 'vue-router'
 
-import Home from '@/pages/Home.vue'
-import About from '@/pages/About.vue'
-import Members from '@/pages/Members.vue'
-import Videos from '@/pages/Videos.vue'
-import MemberInfo from '@/pages/MemberInfo.vue'
-import VideoPlayer from '@/pages/VideoPlayer.vue'
-import NotFound from '@/pages/NotFound.vue'
+const Home = () => import(/* webpackChunkName: "home" */ '@/pages/Home.vue');
+const About = () => import(/* webpackChunkName: "home" */ '@/pages/About.vue');
+const Members = () => import(/* webpackChunkName: "members" */'@/pages/Members.vue');
+const MemberInfo = () => import(/* webpackChunkName: "members" */'@/pages/MemberInfo.vue');
+const Videos = () => import(/* webpackChunkName: "videos" */'@/pages/Videos.vue');
+const VideoPlayer = () => import(/* webpackChunkName: "videos" */'@/pages/VideoPlayer.vue');
+const NotFound = () => import(/* webpackChunkName: "home" */ '@/pages/NotFound.vue');
 
 const membersIdGuard = (to, from) => {
     // members/:id 경로는 반드시 이전 경로가 
