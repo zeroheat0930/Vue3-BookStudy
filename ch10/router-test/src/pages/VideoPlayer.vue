@@ -41,17 +41,17 @@ export default {
             reactive({ video: videos.find((v)=>v.id === currentRoute.params.id) });
         const stopVideo = () => {
             playerRef.value.player.stopVideo();
-            router.push('/videos');
+            router.push({ name:'videos' });
         }
         const playNext = () => {
             const index = videos.findIndex((v)=>v.id === videoInfo.video.id);
             const nextVideo = videos[index+1];
             if (nextVideo) {
                 videoInfo.video = nextVideo;
-                router.push('/videos/' + nextVideo.id);
+                router.push({ name:'videos/id', params: { id: nextVideo.id } });
             } else {
                 videoInfo.video = videos[0];
-                router.push('/videos/' + videos[0].id);
+                router.push({ name:'videos/id', params: { id: videos[0].id } });
             }
         }
         const playPrev = () => {
@@ -59,7 +59,7 @@ export default {
             const prevVideo = videos[index-1];
             if (prevVideo) {
                 videoInfo.video = prevVideo;
-                router.push('/videos/' + prevVideo.id);
+                router.push({ name:'videos/id', params: { id: prevVideo.id } });
             }
         }
         
@@ -71,7 +71,7 @@ export default {
 <style scoped>
 .modal { display: block; position: fixed; z-index: 1; 
     left: 0; top: 0; width: 100%; height: 100%;
-    overflow: auto; 
+    overflow: auto;  
     background-color: rgba(0,0,0,0.4); }
 .box { background-color: white; margin:80px auto;
     max-width: 500px; min-width: 100px; min-height: 350px;
